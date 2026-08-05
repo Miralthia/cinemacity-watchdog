@@ -21,10 +21,9 @@ from zoneinfo import ZoneInfo
 SITE_ID = "10101"  # cinemacity.cz
 BASE = f"https://www.cinemacity.cz/cz/data-api-service/v1/quickbook/{SITE_ID}"
 LANG = "cs_CZ"
-UA = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-)
+# Poctivá identifikace místo předstírání prohlížeče.
+UA = (os.environ.get("USER_AGENT")
+      or "odyssea-watch/1.0 (osobni hlidka vstupenek; nizky objem dotazu)")
 
 FILM_PATTERN = os.environ.get("FILM_PATTERN", "odyss").lower()
 AUDITORIUM_PATTERN = os.environ.get("AUDITORIUM_PATTERN", "imax").lower()
@@ -33,6 +32,13 @@ HORIZON_DAYS = int(os.environ.get("HORIZON_DAYS", "180"))
 # IMAX sály. Doplňuje (nenahrazuje) sondu podle názvu sálu.
 HINT_ATTR = os.environ.get("HINT_ATTR", "70-mm")
 DELAY = float(os.environ.get("REQUEST_DELAY", "0.25"))
+# Kapacita sálu pro přepočet availabilityRatio na počet míst. IMAX VOLVO na
+# Floře má odhadem 385 sedadel (1 místo ~ 1/385 ~ 0.0026). Ukládá se celé
+# číslo míst, ne surový ratio — jinak by drobné kolísání ratia měnilo stav
+# a workflow by si commitoval diff skoro při každém běhu.
+CAPACITY = int(os.environ.get("CAPACITY", "385"))
+# O kolik míst musí přibýt, aby se to hlásilo. 1 = i jediná vrácená vstupenka.
+MIN_SEATS_DELTA = int(os.environ.get("MIN_SEATS_DELTA", "1"))
 
 CZ_DAYS = ["po", "út", "st", "čt", "pá", "so", "ne"]
 
@@ -145,6 +151,8 @@ def collect():
                     # tady dělá 404 — musí se vynechat.
                     "booking": f"https://tickets.cinemacity.cz/order/{e.get('presentationCode') or e['id']}",
                     "soldOut": bool(e.get("soldOut")),
+                    # availabilityRatio = podíl volných míst, rozlišení ~1 sedadlo.
+                    "seats": round(float(e.get("availabilityRatio") or 0.0) * CAPACITY),
                 }
     return found
 
@@ -162,11 +170,11 @@ def save_state(path, events):
 
     Kdyby se soubor přepisoval při každém běhu, měnilo by se v něm razítko
     "updated" a workflow by si po sobě commitoval prázdnou změnu 48× denně.
-    Rozhoduje proto seznam ID — to je přesně to, na čem stojí hlášení.
-    Volatilní pole (soldOut) se tím pádem neaktualizují; drží se hodnota
-    z chvíle, kdy se představení objevilo poprvé, což je i to, co se hlásí.
+    Rozhoduje proto seznam ID a počet volných míst — přesně to, na čem stojí
+    hlášení. Místa se ukládají jako celé číslo, takže kolísání ratia pod
+    jedno sedadlo stav nemění a zbytečný commit nevznikne.
     """
-    if set(events) == set(load_state(path).get("events", {})):
+    if signature(events) == signature(load_state(path).get("events", {})):
         return False
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     payload = {
@@ -177,6 +185,29 @@ def save_state(path, events):
         json.dump(payload, fh, ensure_ascii=False, indent=1, sort_keys=False)
         fh.write("\n")
     return True
+
+
+def signature(events):
+    """Co dělá stav "změněným": množina ID + počet volných míst u každého."""
+    return {k: (v.get("seats"), bool(v.get("soldOut"))) for k, v in events.items()}
+
+
+def freed_seats(known, current):
+    """Představení, kde přibyla místa (vrácené vstupenky) nebo se odvyprodalo.
+
+    Záznamy bez klíče "seats" pocházejí ze staršího formátu stavu — u nich se
+    první běh po upgradu jen tiše zapíše jako výchozí hladina.
+    """
+    out = []
+    for eid, ev in current.items():
+        prev = known.get(eid)
+        if not prev or prev.get("seats") is None:
+            continue
+        gain = (ev.get("seats") or 0) - (prev.get("seats") or 0)
+        back = prev.get("soldOut") and not ev.get("soldOut")
+        if gain >= MIN_SEATS_DELTA or back:
+            out.append(dict(ev, gain=gain, was_sold_out=bool(prev.get("soldOut"))))
+    return sorted(out, key=lambda e: e["datetime"])
 
 
 def prune_past(events):
@@ -195,9 +226,28 @@ def fmt_short(iso):
     return f"{dt.day}. {dt.month}."
 
 
-def render(new_events, gone_events):
+def render(new_events, gone_events, freed=()):
     """Markdown tělo hlášení."""
     lines = []
+    if freed:
+        lines.append(f"### Uvolněná místa ({len(freed)})\n")
+        for cinema, group in group_by_cinema(freed):
+            lines.append(f"**{cinema}**\n")
+            for e in group:
+                if e["was_sold_out"]:
+                    what = "znovu v prodeji"
+                elif e["gain"] == 1:
+                    what = "+1 místo"
+                else:
+                    what = f"+{e['gain']} míst"
+                free = e.get("seats")
+                stav = f", volno ~{free}" if free is not None else ""
+                link = f" — [koupit]({e['booking']})" if e["booking"] else ""
+                lines.append(
+                    f"- **{what}**{stav} — {fmt_dt(e['datetime'])} · "
+                    f"{e['auditorium']}{link}"
+                )
+            lines.append("")
     if new_events:
         lines.append(f"### Nově vypsáno ({len(new_events)})\n")
         for cinema, group in group_by_cinema(new_events):
@@ -255,6 +305,18 @@ def title_for(new_events):
     return f"🎬 {film} v IMAXu: {n} {word} ({span})"
 
 
+def title_for_freed(freed):
+    n = len(freed)
+    film = freed[0]["film"]
+    if n == 1:
+        e = freed[0]
+        what = "znovu v prodeji" if e["was_sold_out"] else (
+            "+1 místo" if e["gain"] == 1 else f"+{e['gain']} míst")
+        return f"🎟️ {film}: {what} — {fmt_dt(e['datetime'])}"
+    # "u" váže genitiv, takže vždy "projekcí"
+    return f"🎟️ {film}: uvolněná místa u {n} projekcí"
+
+
 def gh_output(**kwargs):
     path = os.environ.get("GITHUB_OUTPUT")
     if not path:
@@ -288,6 +350,7 @@ def main():
     if args.force_report:
         new_events = sorted(current.values(), key=lambda e: e["datetime"])
         gone = []
+        freed = []
     else:
         new_events = sorted(
             (v for k, v in current.items() if k not in known),
@@ -298,16 +361,22 @@ def main():
             (v for k, v in known.items() if k not in current and v["datetime"] > future),
             key=lambda e: e["datetime"],
         )
+        freed = [e for e in freed_seats(known, current) if e["datetime"] > future]
 
     save_state(args.state, prune_past(current))
 
-    if not new_events and not gone:
+    if not new_events and not gone and not freed:
         print("Nic nového.")
         gh_output(has_news="false")
         return
 
-    body = render(new_events, gone)
-    title = title_for(new_events) if new_events else "🎬 Odyssea v IMAXu: zrušené termíny"
+    body = render(new_events, gone, freed)
+    if freed:
+        title = title_for_freed(freed)
+    elif new_events:
+        title = title_for(new_events)
+    else:
+        title = "🎬 Odyssea v IMAXu: zrušené termíny"
     with open(args.report, "w", encoding="utf-8") as fh:
         fh.write(body + "\n")
     with open(args.title, "w", encoding="utf-8") as fh:
