@@ -11,10 +11,10 @@ name: Cinema City watchdog
 # ať netrefí stejnou špičku.
 on:
   schedule:
-    - cron: "8,38 * * * *"
-    - cron: "21,51 * * * *"
-    - cron: "1,31 * * * *"
-    - cron: "14,44 * * * *"
+    - cron: "3,23,43 * * * *"
+    - cron: "8,28,48 * * * *"
+    - cron: "13,33,53 * * * *"
+    - cron: "18,38,58 * * * *"
   workflow_dispatch:
     inputs:
       force_report:
