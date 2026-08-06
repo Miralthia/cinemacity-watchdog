@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-06T09:26:45",
+ "updated": "2026-08-06T11:32:25",
  "events": {
   "220722": {
    "id": "220722",
@@ -42,28 +42,6 @@
     "subbed"
    ],
    "booking": "https://tickets.cinemacity.cz/order/220723",
-   "soldOut": false,
-   "seats": 2
-  },
-  "220724": {
-   "id": "220724",
-   "film": "Odyssea",
-   "filmLink": "https://www.cinemacity.cz/films/odyssea/7268s2r",
-   "cinema": "Praha Flora, OC FLORA",
-   "cinemaId": "1052",
-   "datetime": "2026-08-06T20:30:00",
-   "auditorium": "IMAX VOLVO",
-   "attrs": [
-    "15-plus",
-    "2d",
-    "70-mm",
-    "drama",
-    "first-subbed-lang-cs",
-    "history",
-    "original-lang-en",
-    "subbed"
-   ],
-   "booking": "https://tickets.cinemacity.cz/order/220724",
    "soldOut": false,
    "seats": 2
   },
@@ -131,7 +109,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/220727",
    "soldOut": false,
-   "seats": 8
+   "seats": 6
   },
   "220728": {
    "id": "220728",
@@ -439,7 +417,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224121",
    "soldOut": false,
-   "seats": 7
+   "seats": 6
   },
   "224122": {
    "id": "224122",
@@ -461,7 +439,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224122",
    "soldOut": false,
-   "seats": 7
+   "seats": 6
   },
   "224123": {
    "id": "224123",
@@ -527,7 +505,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224117",
    "soldOut": false,
-   "seats": 8
+   "seats": 6
   },
   "224118": {
    "id": "224118",
@@ -615,7 +593,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224479",
    "soldOut": false,
-   "seats": 8
+   "seats": 6
   },
   "224480": {
    "id": "224480",
@@ -747,7 +725,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224485",
    "soldOut": false,
-   "seats": 9
+   "seats": 7
   },
   "224486": {
    "id": "224486",
@@ -879,7 +857,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224491",
    "soldOut": false,
-   "seats": 15
+   "seats": 14
   },
   "224492": {
    "id": "224492",
@@ -901,7 +879,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224492",
    "soldOut": false,
-   "seats": 10
+   "seats": 9
   },
   "224493": {
    "id": "224493",
@@ -945,7 +923,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224494",
    "soldOut": false,
-   "seats": 9
+   "seats": 8
   },
   "224495": {
    "id": "224495",
@@ -967,7 +945,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224495",
    "soldOut": false,
-   "seats": 36
+   "seats": 35
   },
   "224496": {
    "id": "224496",
@@ -1011,7 +989,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224497",
    "soldOut": false,
-   "seats": 13
+   "seats": 12
   },
   "224498": {
    "id": "224498",
@@ -1033,7 +1011,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224498",
    "soldOut": false,
-   "seats": 24
+   "seats": 22
   },
   "224499": {
    "id": "224499",
@@ -1077,7 +1055,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224500",
    "soldOut": false,
-   "seats": 31
+   "seats": 27
   },
   "224501": {
    "id": "224501",
@@ -1407,7 +1385,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224515",
    "soldOut": false,
-   "seats": 28
+   "seats": 25
   },
   "224516": {
    "id": "224516",
@@ -1473,7 +1451,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224518",
    "soldOut": false,
-   "seats": 16
+   "seats": 14
   },
   "224519": {
    "id": "224519",
@@ -1539,7 +1517,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224521",
    "soldOut": false,
-   "seats": 19
+   "seats": 15
   },
   "224522": {
    "id": "224522",
@@ -1561,7 +1539,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224522",
    "soldOut": false,
-   "seats": 22
+   "seats": 17
   },
   "224523": {
    "id": "224523",
@@ -1583,7 +1561,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224523",
    "soldOut": false,
-   "seats": 37
+   "seats": 33
   },
   "224524": {
    "id": "224524",
