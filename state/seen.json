@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-06T14:25:49",
+ "updated": "2026-08-06T15:22:45",
  "events": {
   "220723": {
    "id": "220723",
@@ -199,28 +199,6 @@
    "soldOut": false,
    "seats": 6
   },
-  "220732": {
-   "id": "220732",
-   "film": "Odyssea",
-   "filmLink": "https://www.cinemacity.cz/films/odyssea/7268s2r",
-   "cinema": "Praha Flora, OC FLORA",
-   "cinemaId": "1052",
-   "datetime": "2026-08-08T20:30:00",
-   "auditorium": "IMAX VOLVO",
-   "attrs": [
-    "15-plus",
-    "2d",
-    "70-mm",
-    "drama",
-    "first-subbed-lang-cs",
-    "history",
-    "original-lang-en",
-    "subbed"
-   ],
-   "booking": "https://tickets.cinemacity.cz/order/220732",
-   "soldOut": false,
-   "seats": 6
-  },
   "220733": {
    "id": "220733",
    "film": "Odyssea",
@@ -373,7 +351,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224127",
    "soldOut": false,
-   "seats": 5
+   "seats": 7
   },
   "224128": {
    "id": "224128",
@@ -749,6 +727,28 @@
    "soldOut": false,
    "seats": 6
   },
+  "224487": {
+   "id": "224487",
+   "film": "Odyssea",
+   "filmLink": "https://www.cinemacity.cz/films/odyssea/7268s2r",
+   "cinema": "Praha Flora, OC FLORA",
+   "cinemaId": "1052",
+   "datetime": "2026-08-15T09:00:00",
+   "auditorium": "IMAX VOLVO",
+   "attrs": [
+    "15-plus",
+    "2d",
+    "70-mm",
+    "drama",
+    "first-subbed-lang-cs",
+    "history",
+    "original-lang-en",
+    "subbed"
+   ],
+   "booking": "https://tickets.cinemacity.cz/order/224487",
+   "soldOut": false,
+   "seats": 14
+  },
   "224488": {
    "id": "224488",
    "film": "Odyssea",
@@ -923,7 +923,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224495",
    "soldOut": false,
-   "seats": 34
+   "seats": 31
   },
   "224496": {
    "id": "224496",
@@ -945,7 +945,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224496",
    "soldOut": false,
-   "seats": 31
+   "seats": 30
   },
   "224497": {
    "id": "224497",
@@ -1209,7 +1209,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224508",
    "soldOut": false,
-   "seats": 30
+   "seats": 28
   },
   "224509": {
    "id": "224509",
