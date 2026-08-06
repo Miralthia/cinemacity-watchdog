@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-06T05:55:31",
+ "updated": "2026-08-06T08:42:25",
  "events": {
   "220721": {
    "id": "220721",
@@ -593,7 +593,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224119",
    "soldOut": false,
-   "seats": 6
+   "seats": 7
   },
   "224120": {
    "id": "224120",
@@ -923,7 +923,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224492",
    "soldOut": false,
-   "seats": 12
+   "seats": 10
   },
   "224493": {
    "id": "224493",
@@ -1011,7 +1011,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224496",
    "soldOut": false,
-   "seats": 33
+   "seats": 31
   },
   "224497": {
    "id": "224497",
@@ -1099,7 +1099,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224500",
    "soldOut": false,
-   "seats": 33
+   "seats": 31
   },
   "224501": {
    "id": "224501",
@@ -1121,7 +1121,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224501",
    "soldOut": false,
-   "seats": 21
+   "seats": 19
   },
   "224502": {
    "id": "224502",
@@ -1209,7 +1209,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224505",
    "soldOut": false,
-   "seats": 22
+   "seats": 21
   },
   "224506": {
    "id": "224506",
@@ -1341,7 +1341,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224511",
    "soldOut": false,
-   "seats": 34
+   "seats": 32
   },
   "224512": {
    "id": "224512",
@@ -1473,7 +1473,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224517",
    "soldOut": false,
-   "seats": 23
+   "seats": 19
   },
   "224518": {
    "id": "224518",
@@ -1495,7 +1495,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224518",
    "soldOut": false,
-   "seats": 17
+   "seats": 16
   },
   "224519": {
    "id": "224519",
@@ -1539,7 +1539,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224520",
    "soldOut": false,
-   "seats": 22
+   "seats": 20
   },
   "224521": {
    "id": "224521",
@@ -1649,7 +1649,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224525",
    "soldOut": false,
-   "seats": 10
+   "seats": 8
   },
   "224526": {
    "id": "224526",
