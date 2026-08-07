@@ -1,28 +1,6 @@
 {
- "updated": "2026-08-07T09:15:10",
+ "updated": "2026-08-07T10:01:33",
  "events": {
-  "220729": {
-   "id": "220729",
-   "film": "Odyssea",
-   "filmLink": "https://www.cinemacity.cz/films/odyssea/7268s2r",
-   "cinema": "Praha Flora, OC FLORA",
-   "cinemaId": "1052",
-   "datetime": "2026-08-07T09:00:00",
-   "auditorium": "IMAX VOLVO",
-   "attrs": [
-    "15-plus",
-    "2d",
-    "70-mm",
-    "drama",
-    "first-subbed-lang-cs",
-    "history",
-    "original-lang-en",
-    "subbed"
-   ],
-   "booking": "https://tickets.cinemacity.cz/order/220729",
-   "soldOut": false,
-   "seats": 6
-  },
   "220726": {
    "id": "220726",
    "film": "Odyssea",
@@ -87,7 +65,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/220728",
    "soldOut": false,
-   "seats": 4
+   "seats": 6
   },
   "220725": {
    "id": "220725",
@@ -153,7 +131,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/220731",
    "soldOut": false,
-   "seats": 6
+   "seats": 7
   },
   "220732": {
    "id": "220732",
@@ -945,7 +923,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224497",
    "soldOut": false,
-   "seats": 9
+   "seats": 7
   },
   "224498": {
    "id": "224498",
@@ -967,7 +945,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224498",
    "soldOut": false,
-   "seats": 17
+   "seats": 15
   },
   "224499": {
    "id": "224499",
@@ -1143,7 +1121,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224506",
    "soldOut": false,
-   "seats": 11
+   "seats": 9
   },
   "224507": {
    "id": "224507",
@@ -1231,7 +1209,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224510",
    "soldOut": false,
-   "seats": 16
+   "seats": 10
   },
   "224511": {
    "id": "224511",
@@ -1385,7 +1363,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224517",
    "soldOut": false,
-   "seats": 15
+   "seats": 13
   },
   "224518": {
    "id": "224518",
@@ -1473,7 +1451,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224521",
    "soldOut": false,
-   "seats": 10
+   "seats": 12
   },
   "224522": {
    "id": "224522",
