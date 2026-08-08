@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-08T09:28:53",
+ "updated": "2026-08-08T09:39:09",
  "events": {
   "220730": {
    "id": "220730",
@@ -659,7 +659,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224489",
    "soldOut": false,
-   "seats": 4
+   "seats": 3
   },
   "224490": {
    "id": "224490",
