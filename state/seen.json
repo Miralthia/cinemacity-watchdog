@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-08T09:39:09",
+ "updated": "2026-08-08T10:05:21",
  "events": {
   "220730": {
    "id": "220730",
@@ -65,7 +65,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/220732",
    "soldOut": false,
-   "seats": 6
+   "seats": 7
   },
   "220733": {
    "id": "220733",
@@ -87,7 +87,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/220733",
    "soldOut": false,
-   "seats": 6
+   "seats": 7
   },
   "220734": {
    "id": "220734",
@@ -131,7 +131,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/220735",
    "soldOut": false,
-   "seats": 7
+   "seats": 6
   },
   "220736": {
    "id": "220736",
@@ -1231,7 +1231,7 @@
    ],
    "booking": "https://tickets.cinemacity.cz/order/224515",
    "soldOut": false,
-   "seats": 15
+   "seats": 14
   },
   "224516": {
    "id": "224516",
